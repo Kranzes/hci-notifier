@@ -1,0 +1,5 @@
+*result*
+.direnv
+.ruff_cache
+.mypy_cache
+*__pycache__*
