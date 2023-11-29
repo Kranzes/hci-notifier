@@ -53,6 +53,7 @@ def check_new_job_statuses(
                 job_id: str = job["id"]
                 job_status: str = job["jobStatus"]
                 job_repo_name: str = job["repoName"]
+                job_owner_name: str = job["ownerName"]
                 job_git_rev: str = job["source"]["revision"]
 
                 # Check if the job ID is new or if its status has changed
@@ -62,7 +63,7 @@ def check_new_job_statuses(
                 ):
                     # If it's a new or updated status log it
                     logging.info(
-                        f"repo: {job_repo_name}, git rev: {job_git_rev}, status: {job_status}"
+                        f"repo: {job_owner_name}/{job_repo_name}, git rev: {job_git_rev}, status: {job_status}"
                     )
                     # Send desktop notification if enabled
                     if libnotify:
@@ -72,7 +73,7 @@ def check_new_job_statuses(
                                 "Hercules-CI Job Status",
                                 textwrap.dedent(
                                     f"""
-                                    Repo: {job_repo_name}
+                                    Repo: {job_owner_name}/{job_repo_name}
                                     Git rev: {job_git_rev}
                                     Status: {job_status}
                                     """
