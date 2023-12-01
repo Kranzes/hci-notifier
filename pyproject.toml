@@ -6,7 +6,7 @@ authors = ["Ilan Joselevich <personal@ilanjoselevich.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-requests = "^2.31.0"
+httpx = "^0.25.2"
 
 
 [build-system]

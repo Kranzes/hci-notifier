@@ -48,7 +48,7 @@
               mypy.enable = true;
               # TODO: Get the packages directly fron config.packages.default
               mypy.directories."hci_notifier".extraPythonPackages = with pkgs.python3Packages; [
-                types-requests
+                httpx
               ];
             };
           };

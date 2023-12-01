@@ -1,5 +1,5 @@
 from typing import Any
-import requests
+import httpx
 import logging
 import sys
 import subprocess
@@ -17,7 +17,8 @@ def fetch_latest_job_statuses(
         "account": account,
         "latest": latest,
     }
-    response = requests.get("https://hercules-ci.com/api/v1/jobs", params=params)
+    logging.getLogger("httpx").disabled = True  # httpx likes to talk a lot
+    response = httpx.get("https://hercules-ci.com/api/v1/jobs", params=params)
     if response.json():
         return response.json()
     else:
